@@ -22,6 +22,8 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const API = import.meta.env.VITE_API_URL;
+
     const fileChangeHandler = (e) => {
         const file = e.target.files?.[0];
         if (file) setInput({ ...input, profilePhoto: file });
@@ -42,7 +44,7 @@ const EditProfile = () => {
         }
         try {
             setLoading(true);
-            const res = await axios.post('https://instaclone-g9h5.onrender.com/api/v1/user/profile/edit', formData,{
+            const res = await axios.post(`${API}/user/profile/edit`, formData,{
                 headers:{
                     'Content-Type':'multipart/form-data'
                 },

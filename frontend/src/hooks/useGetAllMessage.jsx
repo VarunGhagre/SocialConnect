@@ -5,12 +5,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const useGetAllMessage = () => {
+
+    const API = import.meta.env.VITE_API_URL
+
     const dispatch = useDispatch();
     const {selectedUser} = useSelector(store=>store.auth);
     useEffect(() => {
         const fetchAllMessage = async () => {
             try {
-                const res = await axios.get(`https://instaclone-g9h5.onrender.com/api/v1/message/all/${selectedUser?._id}`, { withCredentials: true });
+                const res = await axios.get(`${API}/message/all/${selectedUser?._id}`, { withCredentials: true });
                 if (res.data.success) {  
                     dispatch(setMessages(res.data.messages));
                 }

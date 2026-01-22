@@ -5,11 +5,14 @@ import { useDispatch } from "react-redux";
 
 
 const useGetSuggestedUsers = () => {
+
+    const API = import.meta.env.VITE_API_URL
+
     const dispatch = useDispatch();
     useEffect(() => {
         const fetchSuggestedUsers = async () => {
             try {
-                const res = await axios.get('https://instaclone-g9h5.onrender.com/api/v1/user/suggested', { withCredentials: true });
+                const res = await axios.get(`${API}/user/suggested`, { withCredentials: true });
                 if (res.data.success) { 
                     dispatch(setSuggestedUsers(res.data.users));
                 }

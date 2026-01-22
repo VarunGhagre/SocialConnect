@@ -18,6 +18,8 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const API = import.meta.env.VITE_API_URL;
+
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
     }
@@ -26,7 +28,7 @@ const Login = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.post('https://instaclone-g9h5.onrender.com/api/v1/user/login', input, {
+            const res = await axios.post(`${API}/user/login`, input, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -68,7 +70,7 @@ const Login = () => {
                         name="email"
                         value={input.email}
                         onChange={changeEventHandler}
-                        className="focus-visible:ring-transparent my-2"
+                        className="focus-visible:ring-transparent my-2 text-white"
                     />
                 </div>
                 <div>
@@ -78,7 +80,7 @@ const Login = () => {
                         name="password"
                         value={input.password}
                         onChange={changeEventHandler}
-                        className="focus-visible:ring-transparent my-2"
+                        className="focus-visible:ring-transparent my-2 text-white"
                     />
                 </div>
                 {

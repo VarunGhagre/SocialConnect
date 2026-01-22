@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef} from 'react'
 import ChatPage from './components/ChatPage'
 import EditProfile from './components/EditProfile'
 import Home from './components/Home'
@@ -9,10 +9,13 @@ import Signup from './components/Signup'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux'
-import { setSocket } from './redux/socketSlice'
+// import { setSocket } from './redux/socketSlice'
 import { setOnlineUsers } from './redux/chatSlice'
 import { setLikeNotification } from './redux/rtnSlice'
 import ProtectedRoutes from './components/ProtectedRoutes'
+import { connectSocket, disconnectSocket } from './socket'
+import Explore from './components/Explore'
+import Search from "@/components/Search";
 
 
 const browserRouter = createBrowserRouter([
@@ -36,6 +39,14 @@ const browserRouter = createBrowserRouter([
         path: '/chat',
         element: <ProtectedRoutes><ChatPage /></ProtectedRoutes>
       },
+      { 
+        path: "/explore",
+        element: <ProtectedRoutes><Explore /></ProtectedRoutes> 
+      },
+      {
+        path: "/search",
+        element: <ProtectedRoutes><Search /></ProtectedRoutes>
+      },
     ]
   },
   {
@@ -52,6 +63,7 @@ function App() {
   const { user } = useSelector(store => store.auth);
   const { socket } = useSelector(store => store.socketio);
   const dispatch = useDispatch();
+  const socketRef = useRef(null);
 
   useEffect(() => {
     if (user) {
@@ -59,9 +71,10 @@ function App() {
         query: {
           userId: user?._id
         },
-        transports: ['websocket']
+        transports: ['websocket'],
+        withCredentials: true,
       });
-      dispatch(setSocket(socketio));
+      // dispatch(setSocket(socketio));
 
       // listen all the events
       socketio.on('getOnlineUsers', (onlineUsers) => {
@@ -72,13 +85,18 @@ function App() {
         dispatch(setLikeNotification(notification));
       });
 
-      return () => {
-        socketio.close();
-        dispatch(setSocket(null));
-      }
+      // return () => {
+      //   socketio.close();
+      //   dispatch(setSocket(null));
+      // }
+
+    return () => {
+      socketRef.current?.disconnect();
+      socketRef.current = null;
+    };
     } else if (socket) {
       socket.close();
-      dispatch(setSocket(null));
+      // dispatch(setSocket(null));
     }
   }, [user, dispatch]);
 

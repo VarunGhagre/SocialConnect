@@ -5,13 +5,18 @@ import { useDispatch } from "react-redux";
 
 
 const useGetUserProfile = (userId) => {
+
+    const API = import.meta.env.VITE_API_URL;
+
     const dispatch = useDispatch();
     // const [userProfile, setUserProfile] = useState(null);
     useEffect(() => {
+        if (!userId) return;
+
         const fetchUserProfile = async () => {
             try {
-                const res = await axios.get(`https://instaclone-g9h5.onrender.com/api/v1/user/${userId}/profile`, { withCredentials: true });
-                if (res.data.success) { 
+                const res = await axios.get(`${API}/user/${userId}/profile`, { withCredentials: true });
+                if (res.data.success) {
                     dispatch(setUserProfile(res.data.user));
                 }
             } catch (error) {
@@ -19,6 +24,6 @@ const useGetUserProfile = (userId) => {
             }
         }
         fetchUserProfile();
-    }, [userId]);
+    }, [userId, dispatch]);
 };
 export default useGetUserProfile;

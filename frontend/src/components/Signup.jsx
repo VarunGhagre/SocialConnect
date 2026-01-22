@@ -21,11 +21,15 @@ const Signup = () => {
         setInput({ ...input, [e.target.name]: e.target.value });
     }
 
+    const API = import.meta.env.VITE_API_URL;
+    console.log(import.meta.env.VITE_API_URL);
+
     const signupHandler = async (e) => {
         e.preventDefault();
+        console.log(input)
         try {
             setLoading(true);
-            const res = await axios.post('https://instaclone-g9h5.onrender.com/api/v1/user/register', input, {
+            const res = await axios.post(`${API}/user/register`, input, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -67,7 +71,7 @@ const Signup = () => {
                         name="username"
                         value={input.username}
                         onChange={changeEventHandler}
-                        className="focus-visible:ring-transparent my-2"
+                        className="text-white focus-visible:ring-transparent my-2"
                     />
                 </div>
                 <div>
@@ -77,7 +81,7 @@ const Signup = () => {
                         name="email"
                         value={input.email}
                         onChange={changeEventHandler}
-                        className="focus-visible:ring-transparent my-2"
+                        className="focus-visible:ring-transparent my-2 text-white"
                     />
                 </div>
                 <div>
@@ -87,7 +91,7 @@ const Signup = () => {
                         name="password"
                         value={input.password}
                         onChange={changeEventHandler}
-                        className="focus-visible:ring-transparent my-2"
+                        className="focus-visible:ring-transparent my-2 text-white"
                     />
                 </div>
                 {
