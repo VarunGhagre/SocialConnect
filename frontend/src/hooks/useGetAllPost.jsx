@@ -14,7 +14,7 @@ const useGetAllPost = () => {
             try {
                 const res = await axios.get(`${API}/post/all`, { withCredentials: true });
                 if (res.data.success) { 
-                    console.log(res.data.posts);
+                    // console.log(res.data.posts);
                     dispatch(setPosts(res.data.posts));
                 }
             } catch (error) {

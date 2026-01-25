@@ -22,6 +22,7 @@ const LeftSidebar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [openNotification, setOpenNotification] = useState(false);
+  const isChatPage = location.pathname.startsWith("/chat");
 
   const { user } = useSelector((store) => store.auth);
   const { likeNotification } = useSelector(
@@ -87,7 +88,7 @@ const LeftSidebar = () => {
     <>
       {/* ================= DESKTOP (INSTAGRAM STYLE) ================= */}
       <aside className="hidden md:fixed md:left-0 md:top-0 md:z-10 md:flex md:h-screen md:w-[240px] md:flex-col md:border-r md:bg-white md:px-4">
-        <h1 className="my-8 px-3 font-bold text-2xl">LOGO</h1>
+        <h1 className="my-8 px-3 font-bold text-2xl">Pixagram</h1>
 
         {desktopItems.map((item) => (
           <div
@@ -127,6 +128,7 @@ const LeftSidebar = () => {
       </aside>
 
       {/* ================= MOBILE BOTTOM NAV (INSTAGRAM) ================= */}
+      {!isChatPage && (
       <nav className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between border-t bg-white px-6 py-2 md:hidden">
         {/* Home */}
         <button onClick={() => navigate("/")}>
@@ -134,8 +136,8 @@ const LeftSidebar = () => {
         </button>
 
         <button onClick={() => navigate("/chat")}>
-    <MessageCircle />
-  </button>
+          <MessageCircle />
+        </button>
 
         {/* Create (CENTER BIG ICON) */}
         <button
@@ -164,6 +166,7 @@ const LeftSidebar = () => {
           </Avatar>
         </button>
       </nav>
+      )}
 
       {/* ================= MOBILE NOTIFICATIONS ================= */}
       {openNotification && (
