@@ -100,7 +100,6 @@ export const likePost = async (req, res) => {
 
         // implement socket io for real time notification
         const user = await User.findById(likeKrneWalaUserKiId).select('username profilePicture');
-        console.log(user)
          
         const postOwnerId = post.author.toString();
         if(postOwnerId !== likeKrneWalaUserKiId){
