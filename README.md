@@ -124,39 +124,7 @@ The project focuses on building scalable REST APIs, secure authentication, respo
 
 ---
 
-# 📂 Folder Structure
 
-```text
-Social-Connect
-│
-├── client
-│   ├── public
-│   ├── src
-│   │   ├── assets
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── hooks
-│   │   ├── services
-│   │   ├── context
-│   │   └── App.jsx
-│   │
-│   └── package.json
-│
-├── server
-│   ├── config
-│   ├── controllers
-│   ├── middleware
-│   ├── models
-│   ├── routes
-│   ├── socket
-│   ├── utils
-│   ├── uploads
-│   ├── server.js
-│   └── package.json
-│
-├── README.md
-└── .gitignore
-```
 
 ---
 
