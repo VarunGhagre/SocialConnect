@@ -59,7 +59,7 @@ The project focuses on building scalable REST APIs, secure authentication, respo
 * Like Posts
 * Unlike Posts
 * Comment on Posts
-* News Feed
+
 
 ---
 
