@@ -150,7 +150,6 @@ The project focuses on building scalable REST APIs, secure authentication, respo
 ## Chat
 
 * Send Message
-* Fetch Conversation
 * Real-Time Communication
 
 ---
