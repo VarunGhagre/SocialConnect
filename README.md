@@ -42,7 +42,7 @@ The project focuses on building scalable REST APIs, secure authentication, respo
 
 ## 👤 User Profile
 
-* Edit Profile
+*
 * Upload Profile Picture
 * Update Bio
 * View Other Users
