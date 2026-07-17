@@ -6,7 +6,7 @@
 
 Build • Connect • Share • Chat
 
-**MERN Stack | Socket.IO | JWT | Cloudinary 
+**MERN Stack | Socket.IO | JWT | Cloudinary | MongoDB**
 
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Green?logo=node.js)
