@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### A Modern Full Stack Social Media Platform
+### A Modern Full Stack Social Media Platfor
 
 Build • Connect • Share • Chat
 
