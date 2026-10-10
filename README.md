@@ -24,7 +24,7 @@ Build • Connect • Share • Chat
 
 Social Connect is a **full-stack social networking application** built using the **MERN Stack**. It allows users to create an account, connect with other users, share posts, like and comment on posts, follow friends, and communicate through real-time messaging
 
-The project focuses on building scalable REST APIs, secure authentication, responsive UI, and real-time communication using Socket.IO.
+The project focuses on building scalable REST APIs, secure authentication, responsive UI, and real-time communication using Socket.IO
 
 ---
 
